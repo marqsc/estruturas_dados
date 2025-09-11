@@ -15,6 +15,10 @@ public class ArrayList implements Listable{
         numberElements = 0;
     }
 
+    private int map(int logicalIndex) {
+		return (head + logicalIndex) % data.length;
+	}
+
     @Override
     public boolean isEmpty(){
         return numberElements == 0;
@@ -39,9 +43,41 @@ public class ArrayList implements Listable{
         return "["+ result +"]";
     }
 
-    public Object select (int LogicIndex){
-        
+    @Override
+    public Object select (int logicalIndex){
+        Object temp = null;
+        if (isEmpty()) {
+            System.err.println("List is empty");
+            if (logicalIndex < 0 || logicalIndex > numberElements -1) {
+                System.err.println("Invalid index");
+            }else{
+                int physicalIndex = map(logicalIndex);
+                temp = data[physicalIndex];
+            }
+        }
+        return temp;
     }
+
+    public Object[] selectAll() {
+        Object[] result = new Object[numberElements];
+        int aux = head;
+        for (int i = 0; i < numberElements; i++) {
+            result[i] = data[aux];
+            aux = next(aux);
+        }
+        return result;
+    }
+
+    @Override
+	public void append(Object dado) {
+		if (isFull()) {
+            System.err.println("Lista Cheia!");
+		} else {
+            tail = next(tail)
+            this.data[tail] = data;
+            numberElements++;
+		}			
+	}
 
     @Override
     public void clear(){
