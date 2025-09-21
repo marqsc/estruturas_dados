@@ -44,19 +44,19 @@ public class ArrayList implements Listable{
     }
 
     @Override
-    public Object select (int logicalIndex){
-        Object temp = null;
+    public Object select(int logicalIndex) {
         if (isEmpty()) {
             System.err.println("List is empty");
-            if (logicalIndex < 0 || logicalIndex > numberElements -1) {
-                System.err.println("Invalid index");
-            }else{
-                int physicalIndex = map(logicalIndex);
-                temp = data[physicalIndex];
-            }
+            return null;
         }
-        return temp;
+        if (logicalIndex < 0 || logicalIndex >= numberElements) {
+            System.err.println("Invalid index");
+            return null;
+        }
+        int physicalIndex = map(logicalIndex);
+        return data[physicalIndex];
     }
+
 
     public Object[] selectAll() {
         Object[] result = new Object[numberElements];
@@ -73,8 +73,8 @@ public class ArrayList implements Listable{
 		if (isFull()) {
             System.err.println("Lista Cheia!");
 		} else {
-            tail = next(tail)
-            this.data[tail] = data;
+            tail = next(tail);
+            this.data[tail] = dado;
             numberElements++;
 		}			
 	}
