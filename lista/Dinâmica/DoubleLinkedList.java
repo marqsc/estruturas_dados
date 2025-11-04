@@ -2,9 +2,9 @@
  * Classe que implementa uma lista dupla;
  *
  * @param <T> o tipo dos elementos armazenados na lista
- * @author Yuri Kevin Nascimento de Araujo
+ * @author Cláudio Augusto Marques
  * @version 1.0
- * @since 2025-11-03
+ * @since 2025-11-02
  */
 public class DoubleLinkedList<T> implements Listable<T> {
 
