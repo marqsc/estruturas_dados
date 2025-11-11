@@ -8,6 +8,21 @@ for (int j = 0, i < array.length - 1; j++){
 }
 
 //SELECTIONSORT
+        int n = vetor.length;
+        for (int i = 0; i < n - 1; i++) {
+            int indiceMinimo = i;
+            for (int j = i + 1; j < n; j++) {
+                if (vetor[j] < vetor[indiceMinimo]) {
+                    indiceMinimo = j;
+                }
+            }
+            int temp = vetor[indiceMinimo];
+            vetor[indiceMinimo] = vetor[i];
+            vetor[i] = temp;
+        }
+
+
+//INSERTIONSORT
 for (int j = 0, i < array.length - 1; j++){
     int menorIndex = 0;
     for (int i = 1 + j; i < array.length; i++){
@@ -18,11 +33,10 @@ for (int j = 0, i < array.length - 1; j++){
     }
 }
 
-//INSERTIONSORT
 
-
-
-public void swap(int a, int b){
-    int temp = array[a];
-
+//SWAP
+public static void swap(int[] vetor, int i, int j) {
+    int temp = vetor[i];
+    vetor[i] = vetor[j];
+    vetor[j] = temp;
 }
